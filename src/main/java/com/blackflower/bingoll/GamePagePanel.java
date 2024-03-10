@@ -33,6 +33,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
@@ -40,52 +43,44 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
         jButton1.setText("Spin");
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 520, 100, 30));
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "10", "52", "68", "90", "50", "10" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 210, 470));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Last Spins");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void onPageSetted() {
-        /*LayoutManager layoutManager = new GridLayout();
-        JPanel gamePanel = new JPanel(layoutManager);
-        AbsoluteConstraints absConstraints = new AbsoluteConstraints(0, 0, 360, 120);
-        gamePanel.setPreferredSize(new Dimension(360, 120)); // Set preferred size
-        add(gamePanel, absConstraints);
-        
-        gamePanel.setSize(new Dimension(360, 120));
-        GridLayout layout = (GridLayout)gamePanel.getLayout();
-        layout.setHgap(20);
-        layout.setVgap(20);
-        switch (playerCount) {
-            case 2 -> {
-                layout.setColumns(2);
-                layout.setRows(1);
-            }
-            case 3 -> {
-                layout.setColumns(2);
-                layout.setRows(2);
-            }
-            case 4 -> {
-                layout.setColumns(2);
-                layout.setRows(2);
-            }
-            default -> throw new AssertionError();
-        }*/
 
-        int offsetX = 20;
-        int offsetY = 20;
+        int offsetX = 40;
+        int offsetY = 40;
         int maxColumnCount = 2;
         int maxRowCount = 2;
         int currentColumnCount = 0;
         int currentRowCount = 0;
-        int width = 360;
-        int height = 120;
+        int width = 370;
+        int height = 125;
         
         for (int i = 0; i < playerCount; i++) {
-            AbsoluteConstraints absConstraints = new AbsoluteConstraints((width + offsetX) * currentColumnCount, (height + offsetY) * currentRowCount, width, height);
+            AbsoluteConstraints absConstraints = new AbsoluteConstraints((width + offsetX) * currentColumnCount + 60, (height + offsetY) * currentRowCount + 60, width, height);
             GameTableComponent newGameTable = new GameTableComponent();
             add(newGameTable, absConstraints);
             

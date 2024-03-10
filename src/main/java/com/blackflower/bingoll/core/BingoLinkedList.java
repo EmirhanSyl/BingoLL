@@ -37,4 +37,16 @@ public class BingoLinkedList<T> {
     public void replace(T oldData, Node<T> newData){
         
     }
+    
+    public void remove(int index){
+        
+    }
+    
+    public void remove(T data){
+        
+    }
+    
+    public void removeAll(){
+        
+    }
 }

@@ -16,7 +16,7 @@ public class GameTableComponent extends javax.swing.JPanel {
     public GameTableComponent() {
         initComponents();
 
-        this.setPreferredSize(new Dimension(360, 120));
+        this.setPreferredSize(new Dimension(370, 125));
         GridLayout layout = (GridLayout) this.getLayout();
         layout.setColumns(9);
         layout.setRows(3);

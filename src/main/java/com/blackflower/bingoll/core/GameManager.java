@@ -10,7 +10,7 @@ public class GameManager {
     
     public static GameManager instance;
     
-    public BingoLinkedList players;
+    public LinkedList players;
 
     public GameManager() {
         
