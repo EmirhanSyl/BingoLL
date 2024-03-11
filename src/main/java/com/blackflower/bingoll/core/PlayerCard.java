@@ -10,8 +10,9 @@ import java.util.LinkedList;
 public class PlayerCard {
     
     public int id;
+    public String nickname;
     public final CardColor cardColor;
-    public final BingoLinkedList cardNumbersLL;
+    public final BingoLinkedList<Integer> cardNumbersLL;
     public PLAYER_STATUS status;
     
     public static enum PLAYER_STATUS{
@@ -21,7 +22,8 @@ public class PlayerCard {
         TOMBALA,
     }
 
-    public PlayerCard(CardColor cardColor, BingoLinkedList cardNumbersLL) {
+    public PlayerCard(int id, String nickname, CardColor cardColor, BingoLinkedList<Integer> cardNumbersLL) {
+        this.nickname = nickname;
         this.cardColor = cardColor;
         this.cardNumbersLL = cardNumbersLL;
         

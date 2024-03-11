@@ -1,5 +1,6 @@
 package com.blackflower.bingoll;
 
+import com.blackflower.bingoll.core.GameManager;
 import com.blackflower.bingoll.customComponents.GameTableComponent;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -79,9 +80,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         int width = 370;
         int height = 125;
         
-        for (int i = 0; i < playerCount; i++) {
+        for (int i = 0; i <  GameManager.instance.players.size(); i++) {
             AbsoluteConstraints absConstraints = new AbsoluteConstraints((width + offsetX) * currentColumnCount + 60, (height + offsetY) * currentRowCount + 60, width, height);
-            GameTableComponent newGameTable = new GameTableComponent();
+            GameTableComponent newGameTable = new GameTableComponent(GameManager.instance.players.get(i));
             add(newGameTable, absConstraints);
             
             currentColumnCount++;

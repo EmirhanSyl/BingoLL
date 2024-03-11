@@ -1,5 +1,8 @@
 package com.blackflower.bingoll;
 
+import com.blackflower.bingoll.core.GameManager;
+import com.blackflower.bingoll.customComponents.CardColor;
+
 /**
  *
  * @author emirs
@@ -130,6 +133,10 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage{
     private void startGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGameButtonActionPerformed
         // TODO add your handling code here:
         MainFrame.instance.gamePage.setPlayerCount((int)playerCountSpinner.getValue());
+        for (int i = 0; i < (int)playerCountSpinner.getValue(); i++) {
+            GameManager.instance.addPlayer("Player " + i, CardColor.PURPLE);
+        }
+        
         MainFrame.instance.setPage(MainFrame.instance.gamePage);
     }//GEN-LAST:event_startGameButtonActionPerformed
 

@@ -1,5 +1,7 @@
 package com.blackflower.bingoll.core;
 
+import com.blackflower.bingoll.customComponents.CardColor;
+import java.awt.Color;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -11,7 +13,7 @@ public class GameManager {
     
     public static GameManager instance = new GameManager();
     
-    public LinkedList players;
+    public BingoLinkedList<PlayerCard> players = new BingoLinkedList<>();
     Random random = new Random();
 
     public GameManager() {
@@ -58,6 +60,11 @@ public class GameManager {
         }
         
         return bll;
+    }
+    
+    public void addPlayer(String name, CardColor cardColor){
+        PlayerCard pCard = new PlayerCard(players.size(), name, cardColor, createCardNumbers());
+        players.addLast(pCard);
     }
     
 }

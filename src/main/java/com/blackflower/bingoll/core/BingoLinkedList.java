@@ -59,6 +59,22 @@ public class BingoLinkedList<T> {
 
     }
 
+    public T get(int index) {
+
+        if (index >= size || index < 0) {
+            System.out.println("Size: " + size + ", given index: " + index);
+            throw new IndexOutOfBoundsException();
+            //return null;
+        }
+
+        Node<T> tmp = head;
+        for (int i = 0; i < index; i++) {
+            tmp = tmp.next;
+        }
+
+        return tmp.data;
+    }
+
     public void addAfterNode(T data, Node<T> newData) {
 
     }
@@ -67,7 +83,7 @@ public class BingoLinkedList<T> {
         if (size == 0) {
             return false;
         }
-        
+
         Node<T> tmp = head;
         while (tmp != null) { // Correct loop condition
             if (tmp.data.equals(data)) {
@@ -75,7 +91,7 @@ public class BingoLinkedList<T> {
             }
             tmp = tmp.next;
         }
-        
+
         return false;
     }
 
