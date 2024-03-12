@@ -99,6 +99,7 @@ public class CarouselSpinner extends javax.swing.JPanel {
     public final void startAnimation(JLabel labels[]) {
         Timer timer = new Timer(10, new ActionListener() {
             private int[] targetX = new int[labels.length];
+            int totalSlidingAmount = slidingAmount;
 
             {
                 // Initialize targetX array for each label
@@ -109,13 +110,21 @@ public class CarouselSpinner extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                int sliding = slidingAmount;
+                totalSlidingAmount += sliding;
                 for (int i = 0; i < labels.length; i++) {
                     if (labels[i].getLocation().x > targetX[i]) {
-                        int x = labels[i].getLocation().x - slidingAmount;
+                        int x = labels[i].getLocation().x - sliding;
                         labels[i].setLocation(x, labels[i].getLocation().y);
                     } else {
-                        if (labels[i].getLocation().x < -5) {
-                            labels[i].setLocation(90 * labels.length - 1, labels[i].getLocation().y);
+                        if (labels[i].getLocation().x < -1) {
+                            
+                            int maxX = 0;
+                            for (JLabel label : labels) {
+                                maxX = (maxX > label.getLocation().x) ? maxX: label.getLocation().x;
+                            }
+                            labels[i].setLocation(maxX + labels[i].getSize().width, 
+                                    labels[i].getLocation().y);
                         }
                         targetX[i] = labels[i].getLocation().x - labels[i].getSize().width;
                         //((Timer) e.getSource()).stop();

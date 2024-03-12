@@ -6,6 +6,7 @@ import com.blackflower.bingoll.customComponents.GameTableComponent;
 import com.blackflower.bingoll.customComponents.Triangle;
 import com.blackflower.bingoll.customComponents.VerticalLine;
 import java.awt.Color;
+import java.util.Random;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
@@ -15,6 +16,8 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
     private int playerCount = 2;
+    Random random = new Random();
+
 
     public int getPlayerCount() {
         return playerCount;
@@ -39,10 +42,10 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
-        spinnerLine1 = new javax.swing.JPanel();
-        spinnerLine = new javax.swing.JPanel();
         carouselPanel = new javax.swing.JPanel();
         carouselSpinner1 = new com.blackflower.bingoll.customComponents.CarouselSpinner();
+        spinnerLine1 = new javax.swing.JPanel();
+        spinnerLine = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
@@ -70,18 +73,20 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         jLabel3.setText("Last Spins");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 210, 30));
 
-        spinnerLine1.setForeground(new java.awt.Color(255, 255, 255));
-        spinnerLine1.setLayout(new java.awt.GridLayout());
-        add(spinnerLine1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 490, 20, 30));
-
-        spinnerLine.setForeground(new java.awt.Color(255, 255, 255));
-        spinnerLine.setLayout(new java.awt.GridLayout(1, 0));
-        add(spinnerLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 20, 30));
-
         carouselPanel.setLayout(new java.awt.CardLayout());
         carouselPanel.add(carouselSpinner1, "card2");
 
         add(carouselPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 720, 100));
+
+        spinnerLine1.setBackground(new java.awt.Color(255, 255, 255));
+        spinnerLine1.setForeground(new java.awt.Color(255, 255, 255));
+        spinnerLine1.setLayout(new java.awt.GridLayout(1, 0));
+        add(spinnerLine1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 480, 20, 30));
+
+        spinnerLine.setBackground(new java.awt.Color(255, 255, 255));
+        spinnerLine.setForeground(new java.awt.Color(255, 255, 255));
+        spinnerLine.setLayout(new java.awt.GridLayout(1, 0));
+        add(spinnerLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 20, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -89,6 +94,8 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         if (!carouselSpinner1.isSpinningStarted) {
             carouselSpinner1.startAllAnimations();
         }
+        Thread decrementThread = new Thread(() -> adjustSpinningSpeed());
+        decrementThread.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -131,5 +138,26 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     @Override
     public void onPageDisappear() {
         //gamePanel.removeAll();
+    }
+    
+    private void adjustSpinningSpeed(){
+        CarouselSpinner.slidingAmount = random.nextInt(80, 90);
+
+        while (CarouselSpinner.slidingAmount > 0) {
+            int decrement = (int) (Math.pow(CarouselSpinner.slidingAmount, 2) / 400); // Parabolic function (adjust the coefficient to control the rate of decrease)
+            if (decrement < 1) {
+                decrement = 1; // Ensure decrement is at least 1
+            }
+
+            CarouselSpinner.slidingAmount -= decrement;
+
+            // Add a delay to slow down the decrementing process
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
