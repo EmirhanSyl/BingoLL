@@ -69,7 +69,6 @@ public class GameTableComponent extends javax.swing.JPanel {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 Component circle;
-                System.out.println("The number index is:" + numberIndex);
 
                 if (numberColumnIndex == j) {
                     circle = new NumberedCircleComponent(19, playerCard.cardColor, number);
