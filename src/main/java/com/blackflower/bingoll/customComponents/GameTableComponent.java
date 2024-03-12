@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 public class GameTableComponent extends javax.swing.JPanel {
 
     PlayerCard playerCard;
-    
+
     public GameTableComponent() {
         initComponents();
 
@@ -49,12 +49,12 @@ public class GameTableComponent extends javax.swing.JPanel {
             add(cell);
         }
     }
-    
+
     public GameTableComponent(PlayerCard playerCard) {
         initComponents();
 
         this.playerCard = playerCard;
-        
+
         this.setPreferredSize(new Dimension(370, 125));
         GridLayout layout = (GridLayout) this.getLayout();
         layout.setColumns(9);
@@ -63,23 +63,30 @@ public class GameTableComponent extends javax.swing.JPanel {
         layout.setVgap(0);
 
         int numberIndex = 0;
+        int number = playerCard.cardNumbersLL.get(numberIndex);
+        int numberColumnIndex = (Math.floorDiv(number, 10));
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
                 Component circle;
-                int number = playerCard.cardNumbersLL.get(numberIndex);
-                int numberColumnIndex = (Math.floorDiv(number, 10));
+                System.out.println("The number index is:" + numberIndex);
+
                 if (numberColumnIndex == j) {
                     circle = new NumberedCircleComponent(19, playerCard.cardColor, number);
                     numberIndex++;
-                }else{
+                    if (numberIndex < playerCard.cardNumbersLL.size()) {
+                        number = playerCard.cardNumbersLL.get(numberIndex);
+                        numberColumnIndex = (Math.floorDiv(number, 10));
+                    }
+                } else {
                     circle = new CircleComponent(19, playerCard.cardColor);
                 }
-                
+
                 JPanel cell = new JPanel();
                 cell.setPreferredSize(new Dimension(40, 40));
                 CardLayout cardLayout = new CardLayout(0, 0);
                 cell.setLayout(cardLayout);
-                
+
                 cell.add(circle);
                 add(cell);
             }

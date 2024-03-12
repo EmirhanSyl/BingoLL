@@ -44,7 +44,7 @@ public class GameManager {
         
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
-                int origin = (j == 0) ? 1 : (Math.ceilDiv(bll.getLast(), 10) * 10);
+                int origin = (j == 0) ? 1 : ((Math.floorDiv(bll.getLast(), 10) + 1) * 10);
                 int boundry = (5+j)*10;
                 
                 int num = random.nextInt(origin, boundry);
