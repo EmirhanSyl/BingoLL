@@ -6,6 +6,7 @@ import com.blackflower.bingoll.customComponents.GameTableComponent;
 import com.blackflower.bingoll.customComponents.Triangle;
 import com.blackflower.bingoll.customComponents.VerticalLine;
 import java.awt.Color;
+import java.awt.Point;
 import java.util.Random;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
@@ -18,7 +19,6 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private int playerCount = 2;
     Random random = new Random();
 
-
     public int getPlayerCount() {
         return playerCount;
     }
@@ -29,9 +29,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
     public GamePagePanel() {
         initComponents();
-        
-        spinnerLine.add(new Triangle(20, 20,Color.RED, false));
-        spinnerLine1.add(new Triangle(20, 20,Color.RED, true));
+
+        spinnerLine.add(new Triangle(20, 20, Color.RED, false));
+        spinnerLine1.add(new Triangle(20, 20, Color.RED, true));
     }
 
     @SuppressWarnings("unchecked")
@@ -46,6 +46,7 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         carouselSpinner1 = new com.blackflower.bingoll.customComponents.CarouselSpinner();
         spinnerLine1 = new javax.swing.JPanel();
         spinnerLine = new javax.swing.JPanel();
+        spinnerLine2 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
@@ -87,6 +88,11 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         spinnerLine.setForeground(new java.awt.Color(255, 255, 255));
         spinnerLine.setLayout(new java.awt.GridLayout(1, 0));
         add(spinnerLine, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 20, 30));
+
+        spinnerLine2.setBackground(new java.awt.Color(255, 255, 255));
+        spinnerLine2.setForeground(new java.awt.Color(255, 255, 255));
+        spinnerLine2.setLayout(new java.awt.GridLayout());
+        add(spinnerLine2, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 390, 2, 100));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -108,6 +114,7 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel spinnerLine;
     private javax.swing.JPanel spinnerLine1;
+    private javax.swing.JPanel spinnerLine2;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -121,12 +128,12 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         int currentRowCount = 0;
         int width = 370;
         int height = 125;
-        
-        for (int i = 0; i <  GameManager.instance.players.size(); i++) {
+
+        for (int i = 0; i < GameManager.instance.players.size(); i++) {
             AbsoluteConstraints absConstraints = new AbsoluteConstraints((width + offsetX) * currentColumnCount + 60, (height + offsetY) * currentRowCount + 60, width, height);
             GameTableComponent newGameTable = new GameTableComponent(GameManager.instance.players.get(i));
             add(newGameTable, absConstraints);
-            
+
             currentColumnCount++;
             if (currentColumnCount == maxColumnCount) {
                 currentColumnCount = 0;
@@ -139,8 +146,8 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     public void onPageDisappear() {
         //gamePanel.removeAll();
     }
-    
-    private void adjustSpinningSpeed(){
+
+    private void adjustSpinningSpeed() {
         CarouselSpinner.slidingAmount = random.nextInt(80, 90);
 
         while (CarouselSpinner.slidingAmount > 0) {
@@ -159,5 +166,10 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
             }
         }
 
+        int selectedNum = carouselSpinner1.getSelectedNumber(new Point(360, 50));
+        
+        System.out.println("Selected: " + selectedNum);
     }
+
+    
 }
