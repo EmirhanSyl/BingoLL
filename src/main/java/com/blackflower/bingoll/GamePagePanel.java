@@ -1,11 +1,14 @@
 package com.blackflower.bingoll;
 
 import com.blackflower.bingoll.core.GameManager;
+import com.blackflower.bingoll.customComponents.CardColor;
 import com.blackflower.bingoll.customComponents.CarouselSpinner;
 import com.blackflower.bingoll.customComponents.GameTableComponent;
+import com.blackflower.bingoll.customComponents.NumberedCircleComponent;
 import com.blackflower.bingoll.customComponents.Triangle;
 import com.blackflower.bingoll.customComponents.VerticalLine;
 import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.Random;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
@@ -18,6 +21,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
     private int playerCount = 2;
     Random random = new Random();
+    public int lastSpinInfoMax = 5;
+    public int lastSpinInfoAmount;
+    NumberedCircleComponent lastSpins[] = new NumberedCircleComponent[lastSpinInfoMax];
 
     public int getPlayerCount() {
         return playerCount;
@@ -29,6 +35,11 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
     public GamePagePanel() {
         initComponents();
+        
+        GridLayout layout = (GridLayout) lastSpinsPanel.getLayout();
+        layout.setRows(lastSpinInfoMax);
+        layout.setColumns(1);
+        layout.setVgap(10);
 
         spinnerLine.add(new Triangle(20, 20, Color.RED, false));
         spinnerLine1.add(new Triangle(20, 20, Color.RED, true));
@@ -39,14 +50,13 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         carouselPanel = new javax.swing.JPanel();
         carouselSpinner1 = new com.blackflower.bingoll.customComponents.CarouselSpinner();
         spinnerLine1 = new javax.swing.JPanel();
         spinnerLine = new javax.swing.JPanel();
         spinnerLine2 = new javax.swing.JPanel();
+        lastSpinsPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
@@ -60,19 +70,10 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 100, 30));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "10", "52", "68", "90", "50", "10" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, 210, 470));
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Last Spins");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, 210, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 20, 90, 30));
 
         carouselPanel.setLayout(new java.awt.CardLayout());
         carouselPanel.add(carouselSpinner1, "card2");
@@ -91,8 +92,12 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
         spinnerLine2.setBackground(new java.awt.Color(255, 255, 255));
         spinnerLine2.setForeground(new java.awt.Color(255, 255, 255));
-        spinnerLine2.setLayout(new java.awt.GridLayout());
+        spinnerLine2.setLayout(new java.awt.GridLayout(1, 0));
         add(spinnerLine2, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 390, 2, 100));
+
+        lastSpinsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        lastSpinsPanel.setLayout(new java.awt.GridLayout());
+        add(lastSpinsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 50, 110, 330));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -110,8 +115,7 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private com.blackflower.bingoll.customComponents.CarouselSpinner carouselSpinner1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel lastSpinsPanel;
     private javax.swing.JPanel spinnerLine;
     private javax.swing.JPanel spinnerLine1;
     private javax.swing.JPanel spinnerLine2;
@@ -169,7 +173,18 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         int selectedNum = carouselSpinner1.getSelectedNumber(new Point(360, 50));
         
         System.out.println("Selected: " + selectedNum);
+        addLastSpin(selectedNum);
     }
 
-    
+    private void addLastSpin(int selectedNum){
+        if (lastSpinInfoAmount < lastSpinInfoMax) {
+            NumberedCircleComponent lastSpin = new NumberedCircleComponent(25, CardColor.WHITE, selectedNum);
+            lastSpinsPanel.add(lastSpin);
+            lastSpins[lastSpinInfoAmount++] = lastSpin;
+        }else{
+            
+        }
+        repaint();
+        revalidate();
+    }
 }

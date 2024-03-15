@@ -136,7 +136,9 @@ public class CarouselSpinner extends javax.swing.JPanel {
     
     public int getSelectedNumber(Point p) {
         for (JLabel generatedLabel : generatedLabels) {
-            if (generatedLabel.contains(p)) {
+            if (generatedLabel.getLocation().x < p.x 
+                    && p.x < generatedLabel.getLocation().x + generatedLabel.getSize().width ) {
+                
                 return Integer.parseInt(generatedLabel.getText());
             }
         }
