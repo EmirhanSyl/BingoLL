@@ -2,6 +2,7 @@ package com.blackflower.bingoll;
 
 import com.blackflower.bingoll.core.BingoLinkedList;
 import com.blackflower.bingoll.core.GameManager;
+import com.blackflower.bingoll.core.PlayerCard;
 
 /**
  *

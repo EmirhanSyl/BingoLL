@@ -2,6 +2,7 @@ package com.blackflower.bingoll;
 
 import com.blackflower.bingoll.core.BingoLinkedList;
 import com.blackflower.bingoll.core.GameManager;
+import com.blackflower.bingoll.core.PlayerCard;
 import com.blackflower.bingoll.customComponents.CardColor;
 import com.blackflower.bingoll.customComponents.CarouselSpinner;
 import com.blackflower.bingoll.customComponents.GameTableComponent;
@@ -12,6 +13,7 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.util.Random;
+import javax.swing.JRadioButton;
 import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 /**
@@ -26,6 +28,8 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     public int lastSpinInfoAmount;
     NumberedCircleComponent lastSpins[] = new NumberedCircleComponent[lastSpinInfoMax];
     BingoLinkedList<Integer> lastNumbers = new BingoLinkedList<>();
+    
+    JRadioButton cinkoInfos[];
 
     public GamePagePanel() {
         initComponents();
@@ -41,13 +45,30 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
             this.setComponentZOrder(lastSpin, 0);
             lastSpin.setVisible(false);
         }
+        
+        JRadioButton tempCinkoInfos[] = {
+            p1Cinko1,
+            p1Cinko2,
+            p1Cinko3,
+            p2Cinko1,
+            p2Cinko2,
+            p2Cinko3,
+            p3Cinko1,
+            p3Cinko2,
+            p3Cinko3,
+            p4Cinko1,
+            p4Cinko2,
+            p4Cinko3,
+        };
+        
+        cinkoInfos = tempCinkoInfos;
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        fastSpinButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         carouselPanel = new javax.swing.JPanel();
@@ -59,18 +80,31 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         NameLabel2 = new javax.swing.JLabel();
         NameLabel3 = new javax.swing.JLabel();
         NameLabel4 = new javax.swing.JLabel();
+        p1Cinko3 = new javax.swing.JRadioButton();
+        p1Cinko1 = new javax.swing.JRadioButton();
+        p1Cinko2 = new javax.swing.JRadioButton();
+        p2Cinko1 = new javax.swing.JRadioButton();
+        p2Cinko2 = new javax.swing.JRadioButton();
+        p2Cinko3 = new javax.swing.JRadioButton();
+        p3Cinko1 = new javax.swing.JRadioButton();
+        p3Cinko2 = new javax.swing.JRadioButton();
+        p3Cinko3 = new javax.swing.JRadioButton();
+        p4Cinko1 = new javax.swing.JRadioButton();
+        p4Cinko2 = new javax.swing.JRadioButton();
+        p4Cinko3 = new javax.swing.JRadioButton();
+        spinButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Spin");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        fastSpinButton.setText("Fast Spin");
+        fastSpinButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                fastSpinButtonActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 100, 30));
+        add(fastSpinButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, 100, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -122,16 +156,122 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         NameLabel4.setForeground(new java.awt.Color(0, 0, 0));
         NameLabel4.setText("Player 4:");
         add(NameLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 230, 30));
+
+        p1Cinko3.setBackground(new java.awt.Color(255, 255, 255));
+        p1Cinko3.setForeground(new java.awt.Color(255, 0, 0));
+        p1Cinko3.setEnabled(false);
+        p1Cinko3.setMaximumSize(new java.awt.Dimension(30, 30));
+        p1Cinko3.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p1Cinko3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, -1, -1));
+
+        p1Cinko1.setBackground(new java.awt.Color(255, 255, 255));
+        p1Cinko1.setForeground(new java.awt.Color(255, 0, 0));
+        p1Cinko1.setEnabled(false);
+        p1Cinko1.setMaximumSize(new java.awt.Dimension(50, 50));
+        p1Cinko1.setMinimumSize(new java.awt.Dimension(20, 20));
+        p1Cinko1.setPreferredSize(new java.awt.Dimension(30, 30));
+        add(p1Cinko1, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 30, 20, 20));
+
+        p1Cinko2.setBackground(new java.awt.Color(255, 255, 255));
+        p1Cinko2.setForeground(new java.awt.Color(255, 0, 0));
+        p1Cinko2.setEnabled(false);
+        p1Cinko2.setMaximumSize(new java.awt.Dimension(30, 30));
+        p1Cinko2.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p1Cinko2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+
+        p2Cinko1.setBackground(new java.awt.Color(255, 255, 255));
+        p2Cinko1.setForeground(new java.awt.Color(255, 0, 0));
+        p2Cinko1.setEnabled(false);
+        p2Cinko1.setMaximumSize(new java.awt.Dimension(50, 50));
+        p2Cinko1.setMinimumSize(new java.awt.Dimension(20, 20));
+        p2Cinko1.setPreferredSize(new java.awt.Dimension(30, 30));
+        add(p2Cinko1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 20, 20));
+
+        p2Cinko2.setBackground(new java.awt.Color(255, 255, 255));
+        p2Cinko2.setForeground(new java.awt.Color(255, 0, 0));
+        p2Cinko2.setEnabled(false);
+        p2Cinko2.setMaximumSize(new java.awt.Dimension(30, 30));
+        p2Cinko2.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p2Cinko2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, -1, -1));
+
+        p2Cinko3.setBackground(new java.awt.Color(255, 255, 255));
+        p2Cinko3.setForeground(new java.awt.Color(255, 0, 0));
+        p2Cinko3.setEnabled(false);
+        p2Cinko3.setMaximumSize(new java.awt.Dimension(30, 30));
+        p2Cinko3.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p2Cinko3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 30, -1, -1));
+
+        p3Cinko1.setBackground(new java.awt.Color(255, 255, 255));
+        p3Cinko1.setForeground(new java.awt.Color(255, 0, 0));
+        p3Cinko1.setEnabled(false);
+        p3Cinko1.setMaximumSize(new java.awt.Dimension(50, 50));
+        p3Cinko1.setMinimumSize(new java.awt.Dimension(20, 20));
+        p3Cinko1.setPreferredSize(new java.awt.Dimension(30, 30));
+        add(p3Cinko1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 20, 20));
+
+        p3Cinko2.setBackground(new java.awt.Color(255, 255, 255));
+        p3Cinko2.setForeground(new java.awt.Color(255, 0, 0));
+        p3Cinko2.setEnabled(false);
+        p3Cinko2.setMaximumSize(new java.awt.Dimension(30, 30));
+        p3Cinko2.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p3Cinko2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
+
+        p3Cinko3.setBackground(new java.awt.Color(255, 255, 255));
+        p3Cinko3.setForeground(new java.awt.Color(255, 0, 0));
+        p3Cinko3.setEnabled(false);
+        p3Cinko3.setMaximumSize(new java.awt.Dimension(30, 30));
+        p3Cinko3.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p3Cinko3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
+
+        p4Cinko1.setBackground(new java.awt.Color(255, 255, 255));
+        p4Cinko1.setForeground(new java.awt.Color(255, 0, 0));
+        p4Cinko1.setEnabled(false);
+        p4Cinko1.setMaximumSize(new java.awt.Dimension(50, 50));
+        p4Cinko1.setMinimumSize(new java.awt.Dimension(20, 20));
+        p4Cinko1.setPreferredSize(new java.awt.Dimension(30, 30));
+        add(p4Cinko1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, 20, 20));
+
+        p4Cinko2.setBackground(new java.awt.Color(255, 255, 255));
+        p4Cinko2.setForeground(new java.awt.Color(255, 0, 0));
+        p4Cinko2.setEnabled(false);
+        p4Cinko2.setMaximumSize(new java.awt.Dimension(30, 30));
+        p4Cinko2.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p4Cinko2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, -1, -1));
+
+        p4Cinko3.setBackground(new java.awt.Color(255, 255, 255));
+        p4Cinko3.setForeground(new java.awt.Color(255, 0, 0));
+        p4Cinko3.setEnabled(false);
+        p4Cinko3.setMaximumSize(new java.awt.Dimension(30, 30));
+        p4Cinko3.setMinimumSize(new java.awt.Dimension(20, 20));
+        add(p4Cinko3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, -1, -1));
+
+        spinButton1.setText("Spin");
+        spinButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                spinButton1ActionPerformed(evt);
+            }
+        });
+        add(spinButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 100, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void fastSpinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fastSpinButtonActionPerformed
+        if (carouselSpinner1.isSpinningStarted) {
+            return;
+        }
+        
+        addLastSpin(random.nextInt(1, 91));
+    }//GEN-LAST:event_fastSpinButtonActionPerformed
+
+    private void spinButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spinButton1ActionPerformed
         // TODO add your handling code here:
         if (!carouselSpinner1.isSpinningStarted) {
             carouselSpinner1.startAllAnimations();
+        }else{
+            return;
         }
         Thread decrementThread = new Thread(() -> adjustSpinningSpeed());
         decrementThread.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_spinButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -141,9 +281,22 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
     private javax.swing.JLabel NameLabel4;
     private javax.swing.JPanel carouselPanel;
     private com.blackflower.bingoll.customComponents.CarouselSpinner carouselSpinner1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton fastSpinButton;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton p1Cinko1;
+    private javax.swing.JRadioButton p1Cinko2;
+    private javax.swing.JRadioButton p1Cinko3;
+    private javax.swing.JRadioButton p2Cinko1;
+    private javax.swing.JRadioButton p2Cinko2;
+    private javax.swing.JRadioButton p2Cinko3;
+    private javax.swing.JRadioButton p3Cinko1;
+    private javax.swing.JRadioButton p3Cinko2;
+    private javax.swing.JRadioButton p3Cinko3;
+    private javax.swing.JRadioButton p4Cinko1;
+    private javax.swing.JRadioButton p4Cinko2;
+    private javax.swing.JRadioButton p4Cinko3;
+    private javax.swing.JButton spinButton1;
     private javax.swing.JPanel spinnerLine;
     private javax.swing.JPanel spinnerLine1;
     private javax.swing.JPanel spinnerLine2;
@@ -173,28 +326,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
             }
         }
 
-        switch (GameManager.instance.players.size()) {
-            case 2:
-                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
-                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
-                NameLabel3.setText("");
-                NameLabel4.setText("");
-                break;
-            case 3:
-                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
-                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
-                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
-                NameLabel4.setText("");
-                break;
-            case 4:
-                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
-                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
-                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
-                NameLabel4.setText(GameManager.instance.players.get(3).nickname);
-                break;
-            default:
-                throw new AssertionError();
-        }
+        //<editor-fold defaultstate="collapsed" desc="PLEASE DONT UNFOLD THIS PART! NOTHING IMPORTENT...">
+        PLEASEHIDETHISMETHOD();
+        //</editor-fold>
     }
 
     @Override
@@ -225,6 +359,7 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
         System.out.println("Selected: " + selectedNum);
         addLastSpin(selectedNum);
+        carouselSpinner1.isSpinningStarted = false;
     }
 
     private void addLastSpin(int selectedNum) {
@@ -241,5 +376,82 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         }
 
         lastNumber = selectedNum;
+        GameManager.instance.checkGameStatus();
+        updateCinkos();
+        
+    }
+    
+    private void updateCinkos(){
+        for (int i = 0; i < GameManager.instance.players.size(); i++) {
+            PlayerCard card = GameManager.instance.players.get(i);
+            
+            for (int j = 0; j < card.cinkoCount; j++) {
+                cinkoInfos[(i*3)+j].setSelected(true);
+            }
+        }
+    }
+    private void PLEASEHIDETHISMETHOD(){
+        switch (GameManager.instance.players.size()) {
+            case 2 -> {
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText("");
+                NameLabel4.setText("");
+                
+                p1Cinko1.setVisible(true);
+                p1Cinko2.setVisible(true);
+                p1Cinko3.setVisible(true);
+                p2Cinko1.setVisible(true);
+                p2Cinko2.setVisible(true);
+                p2Cinko3.setVisible(true);
+                
+                p3Cinko1.setVisible(false);
+                p3Cinko2.setVisible(false);
+                p3Cinko3.setVisible(false);
+                p4Cinko1.setVisible(false);
+                p4Cinko2.setVisible(false);
+                p4Cinko3.setVisible(false);
+            }
+            case 3 -> {
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
+                NameLabel4.setText("");
+                
+                p1Cinko1.setVisible(true);
+                p1Cinko2.setVisible(true);
+                p1Cinko3.setVisible(true);
+                p2Cinko1.setVisible(true);
+                p2Cinko2.setVisible(true);
+                p2Cinko3.setVisible(true);
+                p3Cinko1.setVisible(true);
+                p3Cinko2.setVisible(true);
+                p3Cinko3.setVisible(true);
+                
+                p4Cinko1.setVisible(false);
+                p4Cinko2.setVisible(false);
+                p4Cinko3.setVisible(false);
+            }
+            case 4 -> {
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
+                NameLabel4.setText(GameManager.instance.players.get(3).nickname);
+                
+                p1Cinko1.setVisible(true);
+                p1Cinko2.setVisible(true);
+                p1Cinko3.setVisible(true);
+                p2Cinko1.setVisible(true);
+                p2Cinko2.setVisible(true);
+                p2Cinko3.setVisible(true);
+                p3Cinko1.setVisible(true);
+                p3Cinko2.setVisible(true);
+                p3Cinko3.setVisible(true);
+                p4Cinko1.setVisible(true);
+                p4Cinko2.setVisible(true);
+                p4Cinko3.setVisible(true);
+            }
+            default -> throw new AssertionError();
+        }
     }
 }

@@ -14,7 +14,7 @@ public class PlayerCard {
     public final BingoLinkedList<GameNumber> cardNumbersLL;
     public PLAYER_STATUS status;
 
-    private int cinkoCount = 0;
+    public int cinkoCount = 0;
 
     public static enum PLAYER_STATUS {
         JUST_STARTED,

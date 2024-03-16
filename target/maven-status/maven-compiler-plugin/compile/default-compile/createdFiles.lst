@@ -13,6 +13,7 @@ com\blackflower\bingoll\customComponents\VerticalLine.class
 com\blackflower\bingoll\core\GameManager.class
 com\blackflower\bingoll\customComponents\Triangle.class
 com\blackflower\bingoll\StartingPagePanel$2.class
+com\blackflower\bingoll\GamePagePanel$2.class
 com\blackflower\bingoll\core\Node.class
 com\blackflower\bingoll\GamePagePanel.class
 com\blackflower\bingoll\StartingPagePanel$1.class
