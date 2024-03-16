@@ -12,6 +12,7 @@ public class CardColor {
     public static final CardColor BLUE = new CardColor("BLUE", Color.BLUE, Color.WHITE, Color.WHITE);
     public static final CardColor PURPLE = new CardColor("PURPLE", new Color(92,21,48), new Color(104, 0, 53), new Color(92,21,48));
     public static final CardColor WHITE = new CardColor("WHITE", Color.WHITE, new Color(104, 0, 53), new Color(92,21,48));
+    public static final CardColor GRAY = new CardColor("GRAY", new Color(204,204,204), new Color(104, 0, 53), new Color(92,21,48));
     
     public static final CardColor COLORS[] = {
         PURPLE,

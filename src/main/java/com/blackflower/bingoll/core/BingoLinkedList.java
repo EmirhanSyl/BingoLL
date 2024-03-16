@@ -15,7 +15,15 @@ public class BingoLinkedList<T> {
     }
 
     public void addFirst(T data) {
-
+        Node<T> newNode = new Node<>(data);
+        if (size == 0) {
+            head = newNode;
+            size++;
+        }else{
+            newNode.next = head;
+            head = newNode;
+            size++;
+        }
     }
 
     public T getFirst() {

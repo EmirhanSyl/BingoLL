@@ -15,7 +15,7 @@ public class NumberedCircleComponent extends JPanel {
 
     private final int radius;
     private final CardColor color;
-    private final int number;
+    private int number;
 
     public NumberedCircleComponent(int radius, CardColor color, int number) {
         this.radius = radius;
@@ -24,6 +24,12 @@ public class NumberedCircleComponent extends JPanel {
         setPreferredSize(new Dimension(2 * radius, 2 * radius));
 
         setBackground(color.getBackgroundColor());
+    }
+    
+    public void setNumber(int number){
+        this.number = number;
+        revalidate();
+        repaint();
     }
 
     @Override
