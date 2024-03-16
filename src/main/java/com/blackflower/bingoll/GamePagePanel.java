@@ -20,20 +20,12 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
  */
 public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
-    private int playerCount = 2;
+    public static int lastNumber = -2;
     Random random = new Random();
     public int lastSpinInfoMax = 5;
     public int lastSpinInfoAmount;
     NumberedCircleComponent lastSpins[] = new NumberedCircleComponent[lastSpinInfoMax];
     BingoLinkedList<Integer> lastNumbers = new BingoLinkedList<>();
-
-    public int getPlayerCount() {
-        return playerCount;
-    }
-
-    public void setPlayerCount(int playerCount) {
-        this.playerCount = playerCount;
-    }
 
     public GamePagePanel() {
         initComponents();
@@ -43,8 +35,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
         for (int i = 0; i < lastSpinInfoMax; i++) {
             NumberedCircleComponent lastSpin = new NumberedCircleComponent(25, CardColor.WHITE, 0);
+            lastSpin.setHoverState(false);
             lastSpins[i] = lastSpin;
-            add(lastSpin, new AbsoluteConstraints(945, 80 * (i+1), 80, 80));
+            add(lastSpin, new AbsoluteConstraints(945, 80 * (i + 1), 80, 80));
             this.setComponentZOrder(lastSpin, 0);
             lastSpin.setVisible(false);
         }
@@ -62,6 +55,10 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         spinnerLine1 = new javax.swing.JPanel();
         spinnerLine = new javax.swing.JPanel();
         spinnerLine2 = new javax.swing.JPanel();
+        NameLabel1 = new javax.swing.JLabel();
+        NameLabel2 = new javax.swing.JLabel();
+        NameLabel3 = new javax.swing.JLabel();
+        NameLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(204, 204, 0));
@@ -81,7 +78,9 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         jLabel3.setText("Last Spins");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 130, 30));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 80, 90, 400));
 
         carouselPanel.setLayout(new java.awt.CardLayout());
@@ -103,6 +102,26 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
         spinnerLine2.setForeground(new java.awt.Color(255, 255, 255));
         spinnerLine2.setLayout(new java.awt.GridLayout(1, 0));
         add(spinnerLine2, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 390, 2, 100));
+
+        NameLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NameLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        NameLabel1.setText("Player 1:");
+        add(NameLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 230, 30));
+
+        NameLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NameLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        NameLabel2.setText("Player 2:");
+        add(NameLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 230, 30));
+
+        NameLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NameLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        NameLabel3.setText("Player 3:");
+        add(NameLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 230, 30));
+
+        NameLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        NameLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        NameLabel4.setText("Player 4:");
+        add(NameLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 230, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -116,6 +135,10 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel NameLabel1;
+    private javax.swing.JLabel NameLabel2;
+    private javax.swing.JLabel NameLabel3;
+    private javax.swing.JLabel NameLabel4;
     private javax.swing.JPanel carouselPanel;
     private com.blackflower.bingoll.customComponents.CarouselSpinner carouselSpinner1;
     private javax.swing.JButton jButton1;
@@ -148,6 +171,29 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
                 currentColumnCount = 0;
                 currentRowCount++;
             }
+        }
+
+        switch (GameManager.instance.players.size()) {
+            case 2:
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText("");
+                NameLabel4.setText("");
+                break;
+            case 3:
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
+                NameLabel4.setText("");
+                break;
+            case 4:
+                NameLabel1.setText(GameManager.instance.players.get(0).nickname);
+                NameLabel2.setText(GameManager.instance.players.get(1).nickname);
+                NameLabel3.setText(GameManager.instance.players.get(2).nickname);
+                NameLabel4.setText(GameManager.instance.players.get(3).nickname);
+                break;
+            default:
+                throw new AssertionError();
         }
     }
 
@@ -193,5 +239,7 @@ public class GamePagePanel extends javax.swing.JPanel implements IPage {
                 lastSpins[i].setNumber(lastNumbers.get(i));
             }
         }
+
+        lastNumber = selectedNum;
     }
 }

@@ -16,26 +16,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="230" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="533" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="471" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
-                          <Component id="startGameButton" min="-2" pref="176" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace pref="483" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -84,6 +64,19 @@
               </Group>
               <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
           </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="469" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="230" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="493" max="-2" attributes="0"/>
+                      <Component id="startGameButton" min="-2" pref="176" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -127,22 +120,18 @@
                   <Component id="p3ThemeCB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="p4NameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="p4CardThemeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="p4CardThemeLabel" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="p4NameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="p4ThemeCB" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="88" max="32767" attributes="0"/>
+              <EmptySpace pref="123" max="32767" attributes="0"/>
               <Component id="startGameButton" min="-2" pref="33" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -227,16 +216,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;CardColor&gt;"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Slide This"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JSlider" name="jSlider1">
     </Component>
     <Component class="javax.swing.JComboBox" name="p4ThemeCB">
       <Properties>

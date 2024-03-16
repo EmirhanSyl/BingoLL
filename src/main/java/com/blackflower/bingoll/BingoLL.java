@@ -10,10 +10,7 @@ import com.blackflower.bingoll.core.GameManager;
 public class BingoLL {
 
     public static void main(String[] args) {
-        BingoLinkedList<Integer> bll = GameManager.instance.createCardNumbers();
         
-        System.out.println("------------------");
-        bll.print();
         //System.out.println(Math.ceilDiv(8,10));
     }
 }

@@ -1,8 +1,7 @@
 package com.blackflower.bingoll.core;
 
+import com.blackflower.bingoll.GamePagePanel;
 import com.blackflower.bingoll.customComponents.CardColor;
-import java.awt.Color;
-import java.util.LinkedList;
 import java.util.Random;
 
 /**
@@ -32,31 +31,38 @@ public class GameManager {
     }
     
     public void checkGameStatus(){
-        // checks all the players status in the game
+        for (int i = 0; i < players.size(); i++) {
+            players.get(i).checkCard(GamePagePanel.lastNumber);
+        }
+        
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).status == PlayerCard.PLAYER_STATUS.TOMBALA) {
+                finishGame(players.get(i));
+            }
+        }
     }
     
-    public void finishGame(){
+    public void finishGame(PlayerCard winner){
         // show the winner and finish the game...
     }
     
-    public BingoLinkedList<Integer> createCardNumbers(){
-        BingoLinkedList<Integer> bll = new BingoLinkedList<>();
+    public BingoLinkedList<GameNumber> createCardNumbers(){
+        BingoLinkedList<GameNumber> bll = new BingoLinkedList<>();
         
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 5; j++) {
-                int origin = (j == 0) ? 1 : ((Math.floorDiv(bll.getLast(), 10) + 1) * 10);
+                int origin = (j == 0) ? 1 : ((Math.floorDiv(bll.getLast().getNumber(), 10) + 1) * 10);
                 int boundry = (5+j)*10;
                 
                 int num = random.nextInt(origin, boundry);
-                if (bll.contains(num)) {
+                GameNumber gameNumber = new GameNumber(num);
+                if (bll.contains(gameNumber)) {
                     j--;
                     continue;
                 }
                 
-                System.out.println(num);
-                bll.addLast(num);
+                bll.addLast(gameNumber);
             }
-            System.out.println("NEW ROW");
         }
         
         return bll;

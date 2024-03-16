@@ -15,7 +15,7 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
 
     public StartingPagePanel() {
         initComponents();
-        
+
         DefaultComboBoxModel<CardColor> model1 = new DefaultComboBoxModel<>(CardColor.COLORS);
         p1ThemeCB.setModel(model1);
         DefaultComboBoxModel<CardColor> model2 = new DefaultComboBoxModel<>(CardColor.COLORS);
@@ -42,8 +42,6 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
         p2NameTextField = new javax.swing.JTextField();
         p2CardThemeLabel = new javax.swing.JLabel();
         p2ThemeCB = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jSlider1 = new javax.swing.JSlider();
         p4ThemeCB = new javax.swing.JComboBox<>();
         p3NameLabel = new javax.swing.JLabel();
         p3NameTextField = new javax.swing.JTextField();
@@ -85,13 +83,6 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
 
         p2CardThemeLabel.setText("Player 2 Card Theme:");
 
-        jButton1.setText("Slide This");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         p3NameLabel.setText("Player 3 Name:");
 
         p3NameTextField.setText("Player 3");
@@ -108,20 +99,6 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(469, 469, 469)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(533, 533, 533)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(471, 471, 471)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(startGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(483, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(169, 169, 169)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,6 +134,15 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
                                 .addComponent(p1CardThemeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(p1ThemeCB, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(222, 222, 222))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(469, 469, 469)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(493, 493, 493)
+                        .addComponent(startGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,28 +178,39 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
                     .addComponent(p3NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(p3ThemeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(p4NameLabel)
                     .addComponent(p4CardThemeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(p4NameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(p4ThemeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(startGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(22, 22, 22))
+                .addGap(74, 74, 74))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void startGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGameButtonActionPerformed
         // TODO add your handling code here:
-        MainFrame.instance.gamePage.setPlayerCount((int) playerCountSpinner.getValue());
-        for (int i = 0; i < (int) playerCountSpinner.getValue(); i++) {
-            GameManager.instance.addPlayer("Player " + i, CardColor.PURPLE);
+
+        switch ((int) playerCountSpinner.getValue()) {
+            case 2 -> {
+                GameManager.instance.addPlayer(p1NameTextField.getText(), (CardColor) p1ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p2NameTextField.getText(), (CardColor) p2ThemeCB.getSelectedItem());
+            }
+            case 3 -> {
+                GameManager.instance.addPlayer(p1NameTextField.getText(), (CardColor) p1ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p2NameTextField.getText(), (CardColor) p2ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p3NameTextField.getText(), (CardColor) p3ThemeCB.getSelectedItem());
+            }
+            case 4 -> {
+                GameManager.instance.addPlayer(p1NameTextField.getText(), (CardColor) p1ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p2NameTextField.getText(), (CardColor) p2ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p3NameTextField.getText(), (CardColor) p3ThemeCB.getSelectedItem());
+                GameManager.instance.addPlayer(p4NameTextField.getText(), (CardColor) p4ThemeCB.getSelectedItem());
+            }
+            default -> throw new AssertionError();
         }
 
         MainFrame.instance.setPage(MainFrame.instance.gamePage);
@@ -233,7 +230,7 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
                 p3NameLabel.setVisible(false);
                 p3NameTextField.setVisible(false);
                 p3ThemeCB.setVisible(false);
-                
+
                 p4CardThemeLabel.setVisible(false);
                 p4NameLabel.setVisible(false);
                 p4NameTextField.setVisible(false);
@@ -244,7 +241,7 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
                 p3NameLabel.setVisible(true);
                 p3NameTextField.setVisible(true);
                 p3ThemeCB.setVisible(true);
-                
+
                 p4CardThemeLabel.setVisible(false);
                 p4NameLabel.setVisible(false);
                 p4NameTextField.setVisible(false);
@@ -255,35 +252,16 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
                 p3NameLabel.setVisible(true);
                 p3NameTextField.setVisible(true);
                 p3ThemeCB.setVisible(true);
-                
+
                 p4CardThemeLabel.setVisible(true);
                 p4NameLabel.setVisible(true);
                 p4NameTextField.setVisible(true);
                 p4ThemeCB.setVisible(true);
             }
-            default -> throw new AssertionError();
+            default ->
+                throw new AssertionError();
         }
     }//GEN-LAST:event_playerCountSpinnerStateChanged
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Timer timer = new Timer(10, new ActionListener() {
-            private int initialX = jSlider1.getLocation().x;
-            private final int targetX = initialX + jSlider1.getSize().width;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jSlider1.getLocation().x < targetX) {
-                    int x = jSlider1.getLocation().x + 1;
-                    jSlider1.setLocation(x, jSlider1.getLocation().y);
-                    System.out.println(x);
-                } else {
-                    ((Timer) e.getSource()).stop();
-                }
-            }
-        });
-        timer.start();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
     public void onPageSetted() {
@@ -296,10 +274,8 @@ public class StartingPagePanel extends javax.swing.JPanel implements IPage {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JLabel p1CardThemeLabel;
     private javax.swing.JLabel p1NameLabel;
     private javax.swing.JTextField p1NameTextField;

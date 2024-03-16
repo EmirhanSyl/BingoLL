@@ -63,7 +63,7 @@ public class GameTableComponent extends javax.swing.JPanel {
         layout.setVgap(0);
 
         int numberIndex = 0;
-        int number = playerCard.cardNumbersLL.get(numberIndex);
+        int number = playerCard.cardNumbersLL.get(numberIndex).getNumber();
         int numberColumnIndex = (Math.floorDiv(number, 10));
 
         for (int i = 0; i < 3; i++) {
@@ -74,7 +74,7 @@ public class GameTableComponent extends javax.swing.JPanel {
                     circle = new NumberedCircleComponent(19, playerCard.cardColor, number);
                     numberIndex++;
                     if (numberIndex < playerCard.cardNumbersLL.size()) {
-                        number = playerCard.cardNumbersLL.get(numberIndex);
+                        number = playerCard.cardNumbersLL.get(numberIndex).getNumber();
                         numberColumnIndex = (Math.floorDiv(number, 10));
                     }
                 } else {
