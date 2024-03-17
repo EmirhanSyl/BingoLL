@@ -1,6 +1,8 @@
 package com.blackflower.bingoll.customComponents;
 
 import com.blackflower.bingoll.GamePagePanel;
+import com.blackflower.bingoll.core.GameManager;
+import com.blackflower.bingoll.core.GameNumber;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -20,12 +22,12 @@ public class NumberedCircleComponent extends JPanel {
 
     private final int radius;
     private final CardColor color;
-    private int number;
+    private GameNumber number;
     private boolean checked;
     private boolean isHovered;
     private boolean hoverState = true;
 
-    public NumberedCircleComponent(int radius, CardColor color, int number) {
+    public NumberedCircleComponent(int radius, CardColor color, GameNumber number) {
         this.radius = radius;
         this.color = color;
         this.number = number;
@@ -43,8 +45,9 @@ public class NumberedCircleComponent extends JPanel {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (hoverState && GamePagePanel.lastNumber == number) {
-                    checked = true;
+                if (hoverState && GamePagePanel.lastNumber == number.getNumber()) {
+                    number.setChecked(true);
+                    GameManager.instance.checkGameStatus(false);
                 }
             }
 
@@ -57,7 +60,7 @@ public class NumberedCircleComponent extends JPanel {
     }
 
     public void setNumber(int number) {
-        this.number = number;
+        this.number.setNumber(number);
         repaint();
     }
 
@@ -106,12 +109,12 @@ public class NumberedCircleComponent extends JPanel {
         Font font = new Font("Arial", Font.BOLD, radius);
         g.setFont(font);
         FontMetrics metrics = g.getFontMetrics(font);
-        String numberString = String.valueOf(number);
+        String numberString = String.valueOf(number.getNumber());
         int stringWidth = metrics.stringWidth(numberString);
         int stringHeight = metrics.getHeight();
         g.drawString(numberString, centerX - stringWidth / 2, centerY + stringHeight / 4);
 
-        if (checked) {
+        if (number.isChecked()) {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.RED.darker());
             g2d.setStroke(new BasicStroke(3));

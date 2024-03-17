@@ -23,9 +23,9 @@ public class MainFrame extends javax.swing.JFrame {
         this.add(mainPanel);
         setPage(startingPage);
 
-        this.mainPanel.setSize(new Dimension(1200, 600));
-        this.setSize(new Dimension(1200, 600));
-        this.setPreferredSize(new Dimension(1200, 600));
+        this.mainPanel.setSize(new Dimension(1250, 600));
+        this.setSize(new Dimension(1250, 600));
+        this.setPreferredSize(new Dimension(1250, 600));
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 

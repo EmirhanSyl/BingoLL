@@ -5,7 +5,7 @@ package com.blackflower.bingoll.core;
  * @author emirs
  */
 public class GameNumber {
-    private final int number;
+    private int number;
     private boolean checked;
 
     public GameNumber(int number) {
@@ -20,6 +20,10 @@ public class GameNumber {
         return checked;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    
     public void setChecked(boolean checked) {
         this.checked = checked;
     }

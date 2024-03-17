@@ -2,6 +2,7 @@ com\blackflower\bingoll\BingoLL.class
 com\blackflower\bingoll\customComponents\CircleComponent.class
 com\blackflower\bingoll\core\GameNumber.class
 com\blackflower\bingoll\core\PlayerCard.class
+com\blackflower\bingoll\GamePagePanel$4.class
 com\blackflower\bingoll\MainFrame$1.class
 com\blackflower\bingoll\StartingPagePanel.class
 com\blackflower\bingoll\customComponents\CarouselSpinner$1.class
@@ -15,7 +16,9 @@ com\blackflower\bingoll\customComponents\Triangle.class
 com\blackflower\bingoll\StartingPagePanel$2.class
 com\blackflower\bingoll\GamePagePanel$2.class
 com\blackflower\bingoll\core\Node.class
+com\blackflower\bingoll\GamePagePanel$3.class
 com\blackflower\bingoll\GamePagePanel.class
+com\blackflower\bingoll\GamePagePanel$5.class
 com\blackflower\bingoll\StartingPagePanel$1.class
 com\blackflower\bingoll\customComponents\NumberedCircleComponent.class
 com\blackflower\bingoll\customComponents\CarouselSpinner$2.class

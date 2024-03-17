@@ -1,5 +1,6 @@
 package com.blackflower.bingoll.core;
 
+import com.blackflower.bingoll.MainFrame;
 import com.blackflower.bingoll.customComponents.CardColor;
 
 /**
@@ -44,6 +45,7 @@ public class PlayerCard {
     }
 
     public void checkCinko() {
+        int prevCinkoCount = cinkoCount;
         cinkoCount = 0;
         for (int i = 0; i < 3; i++) {
             boolean cinko = true;
@@ -63,7 +65,14 @@ public class PlayerCard {
             case 1 -> status = PLAYER_STATUS.BIRINCI_CINKO;
             case 2 -> status = PLAYER_STATUS.IKINCI_CINKO;
             case 3 -> status = PLAYER_STATUS.TOMBALA;
-            default -> throw new AssertionError();
+        }
+        
+        if (prevCinkoCount != cinkoCount) {
+            switch (status) {
+                case BIRINCI_CINKO -> MainFrame.instance.gamePage.insertStatusUpdate(this);
+                case IKINCI_CINKO -> MainFrame.instance.gamePage.insertStatusUpdate(this);
+                case TOMBALA -> MainFrame.instance.gamePage.insertStatusUpdate("'" + nickname + "' Has finished the game. TOMBALA");
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.blackflower.bingoll.core;
 
 import com.blackflower.bingoll.GamePagePanel;
+import com.blackflower.bingoll.MainFrame;
 import com.blackflower.bingoll.customComponents.CardColor;
 import java.util.Random;
 
@@ -30,9 +31,15 @@ public class GameManager {
         // spins the wheel
     }
     
-    public void checkGameStatus(){
+    public void checkGameStatus(boolean autoPlay){
         for (int i = 0; i < players.size(); i++) {
-            players.get(i).checkCard(GamePagePanel.lastNumber);
+            if (autoPlay) {
+                players.get(i).checkCard(GamePagePanel.lastNumber);
+            }else{
+                players.get(i).checkCinko();
+                MainFrame.instance.gamePage.updateCinkos();
+            }
+            
         }
         
         for (int i = 0; i < players.size(); i++) {

@@ -1,6 +1,7 @@
 package com.blackflower.bingoll.customComponents;
 
 import com.blackflower.bingoll.core.BingoLinkedList;
+import com.blackflower.bingoll.core.GameNumber;
 import com.blackflower.bingoll.core.PlayerCard;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -44,7 +45,7 @@ public class GameTableComponent extends javax.swing.JPanel {
             CardLayout cardLayout = new CardLayout(0, 0);
             cell.setLayout(cardLayout);
             //cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            NumberedCircleComponent newCircle = new NumberedCircleComponent(19, CardColor.PURPLE, i * 5);
+            NumberedCircleComponent newCircle = new NumberedCircleComponent(19, CardColor.PURPLE, new GameNumber(i * 5));
             cell.add(newCircle);
             add(cell);
         }
@@ -63,8 +64,8 @@ public class GameTableComponent extends javax.swing.JPanel {
         layout.setVgap(0);
 
         int numberIndex = 0;
-        int number = playerCard.cardNumbersLL.get(numberIndex).getNumber();
-        int numberColumnIndex = (Math.floorDiv(number, 10));
+        GameNumber number = playerCard.cardNumbersLL.get(numberIndex);
+        int numberColumnIndex = (Math.floorDiv(number.getNumber(), 10));
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {
@@ -74,8 +75,8 @@ public class GameTableComponent extends javax.swing.JPanel {
                     circle = new NumberedCircleComponent(19, playerCard.cardColor, number);
                     numberIndex++;
                     if (numberIndex < playerCard.cardNumbersLL.size()) {
-                        number = playerCard.cardNumbersLL.get(numberIndex).getNumber();
-                        numberColumnIndex = (Math.floorDiv(number, 10));
+                        number = playerCard.cardNumbersLL.get(numberIndex);
+                        numberColumnIndex = (Math.floorDiv(number.getNumber(), 10));
                     }
                 } else {
                     circle = new CircleComponent(19, playerCard.cardColor);
