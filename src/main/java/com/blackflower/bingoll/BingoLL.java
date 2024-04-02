@@ -10,8 +10,12 @@ import com.blackflower.bingoll.core.PlayerCard;
  */
 public class BingoLL {
 
+    public static int[][] some;
+
+    ;
     public static void main(String[] args) {
-        
-        //System.out.println(Math.ceilDiv(8,10));
+        if (some == null) {
+            System.out.println("Null");
+        }
     }
 }

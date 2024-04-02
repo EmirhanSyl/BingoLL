@@ -63,10 +63,6 @@ public class BingoLinkedList<T> {
         return tmp.data;
     }
 
-    public void addToIndex(int index, Node<T> data) {
-
-    }
-
     public T get(int index) {
 
         if (index >= size || index < 0) {
@@ -83,10 +79,6 @@ public class BingoLinkedList<T> {
         return tmp.data;
     }
 
-    public void addAfterNode(T data, Node<T> newData) {
-
-    }
-
     public boolean contains(T data) {
         if (size == 0) {
             return false;
@@ -101,26 +93,6 @@ public class BingoLinkedList<T> {
         }
 
         return false;
-    }
-
-    public void replace(int index, Node<T> data) {
-
-    }
-
-    public void replace(T oldData, Node<T> newData) {
-
-    }
-
-    public void remove(int index) {
-
-    }
-
-    public void remove(T data) {
-
-    }
-
-    public void removeAll() {
-
     }
 
     public void print() {
