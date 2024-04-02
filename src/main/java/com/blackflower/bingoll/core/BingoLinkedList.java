@@ -19,7 +19,7 @@ public class BingoLinkedList<T> {
         if (size == 0) {
             head = newNode;
             size++;
-        }else{
+        } else {
             newNode.next = head;
             head = newNode;
             size++;
@@ -31,8 +31,7 @@ public class BingoLinkedList<T> {
     }
 
     public void addLast(T data) {
-
-        Node<T> newNode = new Node<>(data);
+         Node<T> newNode = new Node<>(data);
         if (size == 0) {
             head = newNode;
             size++;
@@ -45,8 +44,49 @@ public class BingoLinkedList<T> {
         }
 
         tmp.next = newNode;
-        newNode.prev = tmp;
         size++;
+    }
+
+    public void addNodeToList() {
+        head = new Node(0);
+        Node current = head;
+
+        for (int i = 1; i <= 14; i++) {
+            Node newNode = new Node(i);
+            current.next = newNode;
+
+            // Check if it's time to move down
+            if (i == 5 || i == 10) {
+                current = head;
+                while (current.down != null) {
+                    current = current.down;
+                }
+            }
+
+            current = newNode;
+        }
+    }
+
+    public Node getNodeFromIndex(int index) {
+        Node current = head;
+        int rowIndex = (index - 1) / 5;
+
+        for (int i = 0; i < rowIndex; i++) {
+            if (current == null) {
+                return null;
+            }
+            current = current.down;
+        }
+
+        int columnIndex = (index - 1) % 5;
+        for (int i = 0; i < columnIndex; i++) {
+            if (current == null) {
+                return null;
+            }
+            current = current.next;
+        }
+
+        return current;
     }
 
     public T getLast() {

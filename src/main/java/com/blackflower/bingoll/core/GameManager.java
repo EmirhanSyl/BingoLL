@@ -27,9 +27,6 @@ public class GameManager {
 
     public GameManager() {
 
-        /*if (instance == null) {
-            instance = new GameManager();
-        }*/
     }
 
     public void checkGameStatus(boolean autoPlay) {
